@@ -1,7 +1,7 @@
 <script>
 	import { beforeUpdate, afterUpdate } from 'svelte';
 	import {fade} from 'svelte/transition'
-	import { spring } from 'svelte/motion';
+
 
 	let cx = 0
 	let cy = 0
@@ -48,6 +48,3 @@
 	{/if}	
 	<circle transition:fade cx={cx} cy={cy} r={r} stroke="black" stroke-width={strokeWidth} fill="{color}" on:click={handler(obj)}/>
 {/if}
-<h1>
-	
-</h1>

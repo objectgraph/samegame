@@ -1,9 +1,32 @@
 <script>
 	import Sphere from './Sphere.svelte'
 	import Game from './Game.js'
+	import {flip} from 'svelte/animate'
+	import { crossfade } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
+	
 	const rows = 12;
 	const cols = 12;
 	const game = new Game(rows,cols);
+	const options = {};
+
+	const [send, receive] = crossfade({
+		duration: d => Math.sqrt(d * 200),
+
+		fallback(node, params) {
+			const style = getComputedStyle(node);
+			const transform = style.transform === 'none' ? '' : style.transform;
+
+			return {
+				duration: 600,
+				easing: quintOut,
+				css: t => `
+					transform: ${transform} scale(${t});
+					opacity: ${t}
+				`
+			};
+		}
+	});
 
 	function handleClick(obj){
 		game.action(obj)
@@ -54,8 +77,12 @@
 	
 	<svg width={cols*40} height={rows*40}>
 	{#each game.data as row,i}
-		{#each game.data[i] as cell,j}
-			<Sphere obj={game.data[i][j]} handler={handleClick}/>
+		{#each game.data[i] as cell,j (cell.id)}
+		<g in:receive="{{key: cell.id}}"
+		out:send="{{key: cell.id}}"
+			animate:flip={options}  >
+						<Sphere obj={cell} handler={handleClick}/>
+			</g>
 		{/each}
 	{/each}
 	</svg>
