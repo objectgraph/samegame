@@ -51,6 +51,15 @@
 		justify-content:space-around;
 		margin:5px;
 	}
+	.noselect {
+		-webkit-touch-callout: none; /* iOS Safari */
+		-webkit-user-select: none; /* Safari */
+		-khtml-user-select: none; /* Konqueror HTML */
+		-moz-user-select: none; /* Old versions of Firefox */
+			-ms-user-select: none; /* Internet Explorer/Edge */
+				user-select: none; /* Non-prefixed version, currently
+									supported by Chrome, Edge, Opera and Firefox */
+	}
 </style>
 <div>
 	<div id="scores">
@@ -58,7 +67,7 @@
 		<span>Selection: {game.currentSelection}</span>
 		<span>Game Over:{game.gameOver}</span>
 	</div>
-	
+	<div class="noselect">
 	<svg width={cols*40} height={rows*40}>
 	{#each game.data as row,i}
 		{#each game.data[i] as cell,j (cell.id)}
@@ -68,6 +77,7 @@
 		{/each}
 	{/each}
 	</svg>
+	</div>
 	<div id="controls">
 		<button on:click={handleNewGame}>New Game
 		</button>
