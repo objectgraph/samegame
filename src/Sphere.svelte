@@ -44,7 +44,7 @@
 </script>
 {#if !obj.deleted}
 	{#if obj.selected}
-		<rect x={cx-(r+2)} y={cy-(r+2)} width={(r+2)*2} height={(r+2)*2} fill="grey" transition:fade></rect>
+		<rect x={cx-(r+2)} y={cy-(r+2)} width={(r+2)*2} height={(r+2)*2} fill="grey"></rect>
 	{/if}	
-	<circle transition:fade cx={cx} cy={cy} r={r} stroke="black" stroke-width={strokeWidth} fill="{color}" on:click={handler(obj)}/>
+	<circle cx={cx} cy={cy} r={r} stroke="black" stroke-width={strokeWidth} fill="{color}" on:click={handler(obj)}/>
 {/if}

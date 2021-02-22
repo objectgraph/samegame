@@ -64,6 +64,7 @@ export default class Game {
         this.undoStack = [];
         this.redoStack = [];
         this.gameOver = false;
+        this.score = 0;
         for (var i = 0; i < this.rows; i++) {
             for (var j = 0; j < this.cols; j++) {
                 let cell = this.data[i][j];
