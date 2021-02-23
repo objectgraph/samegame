@@ -1,6 +1,7 @@
 <script>
 	import Sphere from './Sphere.svelte'
 	import Game from './Game.js'
+	import GameStats from './GameStats.svelte'
 	import { crossfade } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
@@ -66,6 +67,9 @@
 		<span>Score: {game.score}</span>
 		<span>Selection: {game.currentSelection}</span>
 		<span>Game Over:{game.gameOver}</span>
+	</div>
+	<div id="gamestats">
+		<GameStats data={game.data}/>
 	</div>
 	<div class="noselect">
 	<svg width={cols*40} height={rows*40}>
