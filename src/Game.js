@@ -1,6 +1,6 @@
 export default class Game {
 
-    constructor(rows, cols) {
+    constructor(rows, cols, colors) {
         this.data = [];
         this.undoStack = [];
         this.redoStack = [];
@@ -19,7 +19,7 @@ export default class Game {
                     col: j,
                     deleted: false,
                     selected: false,
-                    color: Math.ceil(Math.random() * 5)
+                    color: Math.ceil(Math.random() * colors)
                 };
                 id = id + 1;
                 row.push(obj);
@@ -65,6 +65,7 @@ export default class Game {
         this.redoStack = [];
         this.gameOver = false;
         this.score = 0;
+        this.currentSelection = 0;
         for (var i = 0; i < this.rows; i++) {
             for (var j = 0; j < this.cols; j++) {
                 let cell = this.data[i][j];

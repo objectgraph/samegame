@@ -7,9 +7,9 @@
 	import { fly } from 'svelte/transition';
 
 	
-	const rows = 12;
-	const cols = 12;
-	const game = new Game(rows,cols);
+	const rows = 10;
+	const cols = 10;
+	const game = new Game(rows,cols,4);
 	const options = {duration:500};
 
 

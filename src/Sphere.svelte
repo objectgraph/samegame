@@ -1,6 +1,7 @@
 <script>
 	import { beforeUpdate, afterUpdate } from 'svelte';
 	import {fade} from 'svelte/transition'
+	import {getColor} from './Common.svelte'
 
 
 	let cx = 0
@@ -12,7 +13,7 @@
 	let color = 'red';
 	
 	beforeUpdate(() => {
-		color = getColor();
+		color = getColor(obj.color);
 		cx=obj.col*40+20 
 		cy=obj.row*40+20 
 		r=18
@@ -23,24 +24,7 @@
 			strokeWidth = 0;
 		}
 	});
-	
-	function getColor(){
-		if(obj.color==1){
-			return "red";
-		}
-		else if(obj.color==2){
-			return "green";
-		}
-		else if(obj.color==3){
-			return 'darkorange';
-		}
-		else if(obj.color==4){
-			return 'brown';
-		}
-		else if(obj.color==5){
-			return 'purple';
-		}
-	}
+
 </script>
 {#if !obj.deleted}
 	{#if obj.selected}
