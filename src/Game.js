@@ -6,6 +6,7 @@ export default class Game {
         this.redoStack = [];
         this.rows = rows;
         this.cols = cols;
+        this.colors = colors;
         this.score = 0;
         this.currentSelection = 0;
         this.gameOver = false;
@@ -71,7 +72,7 @@ export default class Game {
                 let cell = this.data[i][j];
                 cell.deleted = false;
                 cell.selected = false;
-                cell.color = Math.ceil(Math.random() * 5)
+                cell.color = Math.ceil(Math.random() * this.colors)
             }
         }
     }

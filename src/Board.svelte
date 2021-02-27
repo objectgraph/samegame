@@ -7,9 +7,10 @@
 	import { fly } from 'svelte/transition';
 
 	
-	const rows = 10;
-	const cols = 10;
-	const game = new Game(rows,cols,4);
+	let rows = 10;
+	let cols = 10;
+	let numColors = 5;
+	$:  game = new Game(rows,cols,numColors);
 	const options = {duration:500};
 
 
@@ -63,6 +64,12 @@
 	}
 </style>
 <div>
+	<div id="setup">
+		Rows: <input type="text" bind:value={rows}>
+		Cols: <input type="text" bind:value={cols}>
+		Colors: <input type="text" bind:value={numColors}>
+
+	</div>
 	<div id="scores">
 		<span>Score: {game.score}</span>
 		<span>Selection: {game.currentSelection}</span>
