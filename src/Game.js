@@ -82,6 +82,7 @@ export default class Game {
         this.getSameColorNeighbors(arr, cell);
         if (arr.length > 0) {
             if (cell.selected) {
+                this.redoStack = [];
                 this.undoStack.push(JSON.parse(JSON.stringify(this.data)));
                 this.score = this.score + ((arr.length) * (arr.length - 1) * 10)
                 arr.forEach((obj) => { obj.deleted = true });
