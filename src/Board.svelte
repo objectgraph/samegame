@@ -65,9 +65,9 @@
 </style>
 <div>
 	<div id="setup">
-		Rows: <input type="text" bind:value={rows}>
-		Cols: <input type="text" bind:value={cols}>
-		Colors: <input type="text" bind:value={numColors}>
+		Rows: <input type="range" min="2" max="10" bind:value={rows}>
+		Cols: <input type="range" min="2" max="10" bind:value={cols}>
+		Colors: <input type="range" min="2" max="5" bind:value={numColors}>
 
 	</div>
 	<div id="scores">
