@@ -1,8 +1,8 @@
 # SameGame (さめがめ)
 
-SameGame implementation in React.
+SameGame implementation in svelte.
 
-To learn react I wanted to try something i created in multiple other languages. 
+To learn svelte I wanted to try something i created in multiple other languages. 
 
 ## How to play
 
@@ -13,7 +13,7 @@ To learn react I wanted to try something i created in multiple other languages.
 ## Demo
 You can play the current deployed code here.
 
-[https://samegame.app](https://samegame.app)
+[https://isamegame.surge.sh/](https://isamegame.surge.sh/)
 
 ## This implmentation
 
