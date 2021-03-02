@@ -41,7 +41,8 @@
 
 <style>
 	svg{
-		border:1px solid grey
+		border:1px solid grey;
+		radius: 5px;
 	}
 	#scores{
 		display:flex;
@@ -52,6 +53,11 @@
 		display:flex;
 		justify-content:space-around;
 		margin:5px;
+	}
+	
+	.ctr{
+		display: grid;
+		place-items: center;
 	}
 	.noselect {
 		-webkit-touch-callout: none; /* iOS Safari */
@@ -75,10 +81,10 @@
 		<span>Selection: {game.currentSelection}</span>
 		<span>Game Over:{game.gameOver}</span>
 	</div>
-	<div id="gamestats">
+	<div id="gamestats" class="ctr">
 		<GameStats data={game.data}/>
 	</div>
-	<div class="noselect">
+	<div class="ctr noselect">
 	<svg width={cols*40} height={rows*40}>
 	{#each game.data as row,i}
 		{#each game.data[i] as cell,j (cell.id)}

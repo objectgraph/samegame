@@ -4,9 +4,8 @@
 	
 <style>
 	#game{
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		display: grid;
+		place-items: center;
 	}
 </style>
 <div id="game">
