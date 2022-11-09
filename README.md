@@ -15,6 +15,11 @@ You can play the current deployed code here.
 
 [https://isamegame.surge.sh/](https://isamegame.surge.sh/)
 
+You can look at the source code live at repl.it
+
+[https://samegame.gavi1.repl.co](https://samegame.gavi1.repl.co)
+
+
 ## This implmentation
 
 There are [multiple](https://en.wikipedia.org/wiki/SameGame) implementations of SameGame. This implementation is unique as it allows for unlimited undo and redo and the main objective is to score high on a given board with the secondary objective of removing all items.
