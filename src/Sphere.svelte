@@ -1,49 +1,41 @@
 <script>
 	import { beforeUpdate, afterUpdate } from 'svelte';
-	import {fade} from 'svelte/transition'
-	import {getColor} from './Common.svelte'
+	import { fade } from 'svelte/transition';
+	import { getColor } from './Common.svelte';
 
-	let cx = 0
-	let cy = 0
-	let r = 10	
-	let strokeWidth = 0
-	export let handler
-	export let obj
-	let color = 'red';
+	export let cell;
+	export let handler;
 	
-	beforeUpdate(() => {
-		color = getColor(obj.color);
-		cx=obj.col*40+20 
-		cy=obj.row*40+20 
-		r=18
-		if(obj.selected){
-			strokeWidth = 2;
-		}
-		else{
-			strokeWidth = 0;
-		}
-	});
+	$: color = getColor(cell.color);
+	$: strokeWidth = cell.selected ? 2 : 0;
 
 	function handleKeyDown(event) {
 		if (event.key === 'Enter' || event.key === ' ') {
-			handler(obj);
+			handler(cell);
 		}
 	}
 </script>
 
-{#if !obj.deleted}
-	{#if obj.selected}
-		<rect x={cx-(r+2)} y={cy-(r+2)} width={(r+2)*2} height={(r+2)*2} fill="grey"></rect>
+{#if !cell.deleted}
+	{#if cell.selected}
+		<rect x={0} y={0} width={40} height={40} fill="grey"/>
 	{/if}	
-	<circle cx={cx} cy={cy} r={r} stroke="black" stroke-width={strokeWidth} fill="{color}"/>
+	<circle 
+		cx={20} 
+		cy={20} 
+		r={18} 
+		stroke="black" 
+		stroke-width={strokeWidth} 
+		fill={color}
+	/>
 	<rect 
-		x={cx-(r+2)} 
-		y={cy-(r+2)} 
-		width={(r+2)*2} 
-		height={(r+2)*2} 
+		x={0} 
+		y={0} 
+		width={40} 
+		height={40} 
 		pointer-events="visible" 
 		fill="none" 
-		on:click={() => handler(obj)}
+		on:click={() => handler(cell)}
 		on:keydown={handleKeyDown}
 		role="button"
 		tabindex="0"
