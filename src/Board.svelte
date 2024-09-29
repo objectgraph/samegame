@@ -2,10 +2,7 @@
 	import Sphere from './Sphere.svelte'
 	import Game from './Game.js'
 	import GameStats from './GameStats.svelte'
-	import { crossfade } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
-	import { fly,fade } from 'svelte/transition';
-
+	import { crossfade, fly, fade } from 'svelte/transition';
 	
 	let rows = 10;
 	let cols = 10;

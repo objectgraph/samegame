@@ -1,5 +1,5 @@
 <script>
-    import { beforeUpdate, afterUpdate } from "svelte";
+    import { beforeUpdate, afterUpdate } from 'svelte';
     import {getColor} from './Common.svelte';
     export let data;
 
