@@ -1,34 +1,34 @@
 <script>
-    import { beforeUpdate, afterUpdate } from "svelte";
-    import {getColor} from './Common.svelte';
+    import { getColor } from './Common.svelte';
     export let data;
 
-    let colors = {};
-    beforeUpdate(() => {
-        colors = {};
+    $: colors = calculateColors(data);
+
+    function calculateColors(data) {
+        let colorCounts = {};
         data.forEach((row) => {
             row.forEach((cell) => {
                 if (!cell.deleted) {
-                    if (!Object.keys(colors).includes("" + cell.color + "")) {
-                        colors[cell.color] = 1;
-                    } else {
-                        colors[cell.color] = colors[cell.color] + 1;
-                    }
+                    const colorKey = cell.color.toString();
+                    colorCounts[colorKey] = (colorCounts[colorKey] || 0) + 1;
                 }
             });
         });
-    });
+        return colorCounts;
+    }
 </script>
+
 <style>
-    svg{
-        border:1px solid #ccc
+    svg {
+        border: 1px solid #ccc;
     }
 </style>
-<svg width={Object.keys(colors).length*80} height={60}>
-    {#each Object.keys(colors) as col,i}
-        <g transform="translate({45*i+40},{20})">
-        <circle cx={10} cy={10} r={20} fill={getColor(col)}></circle>
-        <text y="10" textAnchor="middle" stroke="#ffffff" strokeWidth="1px" fill="#000000" dy=".3em">{colors[col]}</text>
+
+<svg width={Object.keys(colors).length * 80} height={60}>
+    {#each Object.entries(colors) as [color, count], i}
+        <g transform="translate({45 * i + 40}, 30)">
+            <circle cx={0} cy={0} r={20} fill={getColor(parseInt(color))}></circle>
+            <text x={0} y={0} text-anchor="middle" stroke="#ffffff" stroke-width="1px" fill="#000000" dy=".3em">{count}</text>
         </g>
     {/each}
 </svg>
